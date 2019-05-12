@@ -3,7 +3,7 @@
 Trying to re-create a 3D environment with 2D ray casting.
 The code is written in JAVA with an mvc architecture, rendering made with Swing.
 No javadoc for the moment.
-![Screenshot]([https://prnt.sc/nnif8l](https://prnt.sc/nnif8l))
+![Screenshot](https://prnt.sc/nnif8l)
 
 <br /><br />
 Some resources that I used:<br />
