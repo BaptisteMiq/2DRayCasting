@@ -53,7 +53,8 @@ public class View3D extends JPanel {
 		paintComponent(g);
 
 		Graphics2D g2d = (Graphics2D) g;
-		GradientPaint gp = new GradientPaint(0, View.HEIGHT, new Color(0, 200, 0), 0, View.HEIGHT - 150, new Color(0, 100, 0));
+		GradientPaint gp = new GradientPaint(0, View.HEIGHT, new Color(0, 200, 0), 0, View.HEIGHT - 150,
+				new Color(0, 100, 0));
 		g2d.setPaint(gp);
 		g2d.fillRect(0, 0, View.WIDTH, View.HEIGHT);
 
@@ -74,17 +75,12 @@ public class View3D extends JPanel {
 			if (colorFromDepth > 255)
 				colorFromDepth = 255;
 
-			Double a = 1.0;
-			if (rays.size() > 0) {
-				a = Math.acos(Controller.getCenterRay(rays).getDirection().heading());
-
-			}
-			Integer h = (int) (Math.round(new Map().mapDouble((double) scene.get(i), 0.0, (double) View.WIDTH,
-					(double) View.HEIGHT / 2, 0.0)));
+			Double d = (double) scene.get(i) / View.WIDTH;
+			Integer h = (int) Math.round(60 / d); // No mapping
 
 //			g.setColor(this.getSceneColor().get(i));
 			g.setColor(new Color(colorFromDepth, colorFromDepth, colorFromDepth));
-			g.fillRect(i * w + w / 2 - 5, View.WIDTH / 2 - h / 2, w, h);
+			g.fillRect(i * w + w / 2, View.WIDTH / 2 - h / 2, w, h);
 
 		}
 	}

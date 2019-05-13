@@ -11,7 +11,7 @@ public class Main {
 		View view = new View("Test");
 		Controller controller = new Controller(view);
 		
-		controller.addRectangle(new Vector2D(0.0, 0.0), View.WIDTH-1, View.HEIGHT-1);
+		controller.addRectangle(new Vector2D(10.0, 10.0), View.WIDTH-40, View.HEIGHT-60);
 		controller.addRectangle(new Vector2D(200.0, 200.0), 150, 100);
 		
 		controller.addRectangle(new Vector2D(200.0, 200.0), 150, 100, 1);

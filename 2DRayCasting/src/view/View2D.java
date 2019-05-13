@@ -84,15 +84,6 @@ public class View2D extends JPanel {
 		int indRay = 0;
 		for (Ray ray : rays) {
 
-//			System.out.println(ray.getAngle());
-//			System.out.println();
-
-//			ray.updateAngle();
-
-//			g.drawLine((int) Math.round(ray.getPosition().getX()), (int) Math.round(ray.getPosition().getY()),
-//					(int) Math.round(ray.getPosition().getX() + ray.getDirection().getX() * 10),
-//					(int) Math.round(ray.getPosition().getY() + ray.getDirection().getY() * 10));
-
 			Vector2D closest = null;
 			Double record = 1e9;
 			for (Boundary boundary : boundaries) {
@@ -108,8 +99,6 @@ public class View2D extends JPanel {
 					}
 
 					Double dist = ray.getPosition().getDist(castPoint);
-					Double a = ray.getDirection().heading() - Controller.getCenterRay(rays).getDirection().heading();
-					dist = dist * Math.cos(a);
 					if (dist <= VIEW_DISTANCE) {
 						if (dist < record) {
 							record = dist;
@@ -127,7 +116,8 @@ public class View2D extends JPanel {
 						(int) Math.floor(closest.getX()), (int) Math.floor(closest.getY()));
 			}
 
-			view3D.getScene().add((int) Math.floor(record));
+			Double a = ray.getDirection().heading() - Controller.getCenterRay(rays).getDirection().heading();
+			view3D.getScene().add((int) Math.floor(record * Math.cos(a)));
 			view3D.getSceneColor().add(g.getColor());
 
 			indRay++;
